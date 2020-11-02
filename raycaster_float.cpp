@@ -144,7 +144,8 @@ void RayCasterFloat::Trace(uint16_t screenX,
     *textureY = 0;
     *textureStep = 0;
     if (distance > 0) {
-        *screenY = INV_FACTOR / distance;
+        *screenY =
+            (INV_FACTOR / distance > 255.0f) ? 255 : INV_FACTOR / distance;
         auto txs = (*screenY * 2.0f);
         if (txs != 0) {
             *textureStep = (256 / txs) * 256;
