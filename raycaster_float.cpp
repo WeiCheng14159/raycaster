@@ -134,7 +134,7 @@ void RayCasterFloat::Trace(uint16_t screenX,
     float hitOffset;
     int hitDirection;
     float deltaAngle = atanf(((int16_t) screenX - SCREEN_WIDTH / 2.0f) /
-                             (SCREEN_WIDTH / 2.0f) * M_PI / 4);
+                             (SCREEN_WIDTH / 2.0f) * FOV / 2);
     float lineDistance = Distance(_playerX, _playerY, _playerA + deltaAngle,
                                   &hitOffset, &hitDirection);
     float distance = lineDistance * cos(deltaAngle);
