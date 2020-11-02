@@ -115,9 +115,12 @@ int main(int argc, char *args[])
                     isExiting =
                         ProcessEvent(event, &moveDirection, &rotateDirection);
                 }
-                const auto nextCounter = SDL_GetPerformanceCounter();
-                const auto seconds = (nextCounter - tickCounter) /
-                                     static_cast<float>(tickFrequency);
+                uint64_t nextCounter = SDL_GetPerformanceCounter();
+                uint64_t counterElapsed = nextCounter - tickCounter;
+                float seconds = static_cast<float>(counterElapsed) /
+                                static_cast<float>(tickFrequency);
+                printf("fps = %5.1f fps\n", 1 / seconds);
+
                 tickCounter = nextCounter;
                 game.Move(moveDirection, rotateDirection, seconds);
             }
