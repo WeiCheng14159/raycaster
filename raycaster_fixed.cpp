@@ -248,7 +248,7 @@ void RayCasterFixed::Trace(uint16_t screenX,
         distance += deltaY;
     } else if (_playerA == 512) {
         distance -= deltaY;
-    } else
+    } else {
         switch (_viewQuarter) {
         case 0:
             distance += MulS(LOOKUP8(g_cos, _viewAngle), deltaY);
@@ -263,7 +263,7 @@ void RayCasterFixed::Trace(uint16_t screenX,
             distance += MulS(LOOKUP8(g_cos, INVERT(_viewAngle)), deltaY);
             break;
         }
-
+    }
     if (_playerA == 256) {
         distance += deltaX;
     } else if (_playerA == 768) {
