@@ -8,7 +8,7 @@ bool RayCasterFloat::IsWall(float rayX, float rayY)
     int tileX = static_cast<int>(rayX);
     int tileY = static_cast<int>(rayY);
 
-    if (tileX < 0 || tileY < 0 || tileX >= MAP_X - 1 || tileY >= MAP_Y - 1) {
+    if (tileX < 0 || tileY < 0 || tileX > MAP_X - 1 || tileY > MAP_Y - 1) {
         return true;
     }
     return g_map[(tileX >> 3) + (tileY << (MAP_XS - 3))] &
